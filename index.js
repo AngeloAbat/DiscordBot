@@ -3,7 +3,6 @@ const rant = require("./comments/rants.json").rantReplies
 const sexy = require("./comments/sexy.json").sexyReplies
 
 const { Client, IntentsBitField } = require(`discord.js`);
-const { Player, QueryType } 
 
 const client = new Client({
   intents: [
