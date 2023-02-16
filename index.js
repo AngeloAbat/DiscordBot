@@ -15,6 +15,7 @@ const client = new Client({
 });
 
 
+
 client.on('ready', (c)=>{
     console.log(`${c.user.tag} is ready`)
     client.user.setActivity({
