@@ -2,7 +2,7 @@ const { getRandomNum } = require("./randomInt")
 const rant = require("./dataPool/rants.json").rantReplies
 
 module.exports = {
-    Rant: function(){
+    Bully: function(){
         return(`${rant[getRandomNum(rant.length)].message}`)
     }
 }
