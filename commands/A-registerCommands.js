@@ -1,8 +1,8 @@
 const {REST , Routes, Client, Collection, IntentsBitField} = require(`discord.js`);
+require('dotenv').config();
 
-const token = require('../config.json').token
-
-const rest = new REST({version: `10`}).setToken(token);
+const envToken = process.env.TOKEN
+const rest = new REST({version: `10`}).setToken(envToken);
 
 
 module.exports = {

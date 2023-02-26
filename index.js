@@ -1,4 +1,6 @@
-const { token, prefix } = require("./config.json");
+require('dotenv').config();
+const envToken = process.env.TOKEN
+
 const { Client, IntentsBitField, userMention, ActivityType } = require(`discord.js`);
 const {Player, QueryType} = require("discord-player")
 
@@ -69,4 +71,4 @@ client.on('interactionCreate', async interaction => {
 
   });
 
-client.login(token);
+client.login(envToken);
