@@ -1,5 +1,5 @@
 const { getRandomNum } = require("./randomInt")
-const rant = require("./dataPool/rants.json").rantReplies
+const rant = require("./dataPool/bully.json").bullyReplies
 
 const {userMention} = require(`discord.js`)
 

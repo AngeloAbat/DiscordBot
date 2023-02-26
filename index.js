@@ -1,5 +1,5 @@
 const { token, prefix } = require("./config.json");
-const { Client, IntentsBitField, REST, Routes, Collection, Events, userMention } = require(`discord.js`);
+const { Client, IntentsBitField, REST, Routes, Collection, Events, userMention, ActivityType } = require(`discord.js`);
 const {Player, QueryType} = require("discord-player")
 
 const resetCommands = require('./commands/A-registerCommands').register
@@ -7,6 +7,7 @@ const resetCommands = require('./commands/A-registerCommands').register
 const rollDice = require("./commands/Dice").rollDice
 const sexy = require("./commands/Sexy").Sexy
 const bully = require("./commands/Bully").Bully
+const flirt = require(`./commands/Flirt`).Flirt
 const pun = require(`./commands/Pun`).Pun
 
 const client = new Client({
@@ -23,10 +24,9 @@ const client = new Client({
 
 client.on('ready', (c)=>{
     console.log(`${c.user.tag} IS READY TO INITIATE COMMANDS`)
-    client.user.setActivity({
-        name: "🛠️ Work in Progress 🛠️",
+    client.user.setActivity("🛠️ Work in Progress 🛠️",{
         // name: "🎶 | Music Time",
-        // type: ActivityType.Listening
+        type: ActivityType.Competing
     })
     // resetCommands(client)
 })
@@ -44,19 +44,22 @@ client.on('interactionCreate', async interaction => {
     if (interaction.commandName === "roll"){
         await interaction.reply(`${rollDice()}`)
     }
+    if (interaction.commandName === 'pun'){
+        await interaction.reply(`${pun(interaction)}`)
+    }
     if (interaction.commandName === 'sexy'){
         await interaction.reply(`${sexy(interaction)}`)
     }
-    if (interaction.commandName === 'pun'){
-        await interaction.reply(`${pun()}`)
+    if (interaction.commandName === 'flirt'){
+        await interaction.reply(`${flirt(interaction)}`)
     }
     if (interaction.commandName === 'bully'){
         let bulliedName = interaction.options.get('who').user.username || interaction.user.username
         client.user.setActivity({
-            name: `Just Bullied ${bulliedName}`,
+            name: `& Bullying ${bulliedName}`,
         })
 
-        await interaction.reply(`${bully(interaction)}`)
+        await interaction.channel.send(`${bully(interaction)}`)
     }
     if (interaction.commandName === 'happydango'){
         await interaction.reply('https://64.media.tumblr.com/998b507d66cd5bdbbf7b8d0a9adec491/tumblr_ndn73oBBRw1td6y6ho2_500.gif')
