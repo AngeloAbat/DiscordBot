@@ -6,10 +6,10 @@ const rest = new REST({version: `10`}).setToken(token);
 
 
 module.exports = {
-     register:async(e)=>{
+     register:async(event)=>{
         try{
             console.log(`Started refreshing the commands for the application (/) commands.`)
-            await rest.put(Routes.applicationCommands(e.user.id), {body: commands})
+            await rest.put(Routes.applicationCommands(event.user.id), {body: commands})
             console.log('Successfully reloaded the commands for the application (/) commands.')
         } catch(error){
             console.log(error)
@@ -20,7 +20,7 @@ module.exports = {
 const commands = [
     {
         "name" : "ping",
-        "description" : "Check client and server ms!",
+        "description" : "PONG!",
     },
     {
         "name" : "roll",

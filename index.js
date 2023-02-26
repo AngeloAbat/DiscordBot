@@ -1,5 +1,5 @@
 const { token, prefix } = require("./config.json");
-const { Client, IntentsBitField, REST, Routes, Collection, Events, userMention, ActivityType } = require(`discord.js`);
+const { Client, IntentsBitField, userMention, ActivityType } = require(`discord.js`);
 const {Player, QueryType} = require("discord-player")
 
 const resetCommands = require('./commands/A-registerCommands').register
@@ -35,8 +35,6 @@ client.on('ready', (c)=>{
 
 client.on('interactionCreate', async interaction => {
     if (!interaction.isChatInputCommand()) return;
-
-
   
     if (interaction.commandName === 'ping') {
         await interaction.reply(`Pong`);
@@ -57,9 +55,10 @@ client.on('interactionCreate', async interaction => {
         let bulliedName = interaction.options.get('who').user.username || interaction.user.username
         client.user.setActivity({
             name: `& Bullying ${bulliedName}`,
+            type: ActivityType.Watching
         })
 
-        await interaction.channel.send(`${bully(interaction)}`)
+        await interaction.reply(`${bully(interaction)}`)
     }
     if (interaction.commandName === 'happydango'){
         await interaction.reply('https://64.media.tumblr.com/998b507d66cd5bdbbf7b8d0a9adec491/tumblr_ndn73oBBRw1td6y6ho2_500.gif')
