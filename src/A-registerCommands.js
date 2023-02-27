@@ -1,4 +1,4 @@
-const {REST , Routes, Client, Collection, IntentsBitField} = require(`discord.js`);
+const {REST , Routes} = require(`discord.js`);
 require('dotenv').config();
 
 const envToken = process.env.TOKEN

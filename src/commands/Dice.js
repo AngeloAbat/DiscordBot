@@ -1,4 +1,4 @@
-const getRandomNum = require("./randomInt").getRandomNum
+const { getRandomNum } = require("../Intrinsics/randomInt")
 
 module.exports = {
     rollDice: function(){

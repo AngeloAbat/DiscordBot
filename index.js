@@ -4,13 +4,13 @@ const envToken = process.env.TOKEN
 const { Client, IntentsBitField, userMention, ActivityType } = require(`discord.js`);
 const {Player, QueryType} = require("discord-player")
 
-const resetCommands = require('./commands/A-registerCommands').register
+const resetCommands = require('./src/A-registerCommands').register
 
-const rollDice = require("./commands/Dice").rollDice
-const sexy = require("./commands/Sexy").Sexy
-const bully = require("./commands/Bully").Bully
-const flirt = require(`./commands/Flirt`).Flirt
-const pun = require(`./commands/Pun`).Pun
+const rollDice = require("./src/commands/Dice").rollDice
+const sexy = require("./src/commands/Sexy").Sexy
+const bully = require("./src/commands/Bully").Bully
+const flirt = require(`./src/commands/Flirt`).Flirt
+const pun = require(`./src/commands/Pun`).Pun
 
 const client = new Client({
   intents: [
