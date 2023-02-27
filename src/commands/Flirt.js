@@ -3,7 +3,7 @@ const { getRandomNum } = require("../Intrinsics/randomInt")
 const flirt = require("../dataPool/flirt.json").flirtsReplies
 
 module.exports = {
-    Flirt: function(interaction){
+    Flirt: function(interaction, client){
         return(`${userMention(interaction.user.id)} ${flirt[getRandomNum(flirt.length)].message}`)
     }
 }

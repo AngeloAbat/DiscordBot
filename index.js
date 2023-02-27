@@ -12,6 +12,8 @@ const bully = require("./src/commands/Bully").Bully
 const flirt = require(`./src/commands/Flirt`).Flirt
 const pun = require(`./src/commands/Pun`).Pun
 
+const commandSchema = require("./src/dataPool/commands.json").schema
+
 const client = new Client({
   intents: [
     IntentsBitField.Flags.Guilds,
@@ -22,21 +24,20 @@ const client = new Client({
   ],
 });
 
-// const player = new Player(client)
-
 client.on('ready', (c)=>{
     console.log(`${c.user.tag} IS READY TO INITIATE COMMANDS`)
     client.user.setActivity("🛠️ Work in Progress 🛠️",{
         // name: "🎶 | Music Time",
-        type: ActivityType.Competing
+        type: ActivityType.Watching
     })
     // resetCommands(client)
 })
 
 
-
 client.on('interactionCreate', async interaction => {
     if (!interaction.isChatInputCommand()) return;
+
+    console.log(commandSchema.find(({name}) => name === interaction.commandName))
   
     if (interaction.commandName === 'ping') {
         await interaction.reply(`Pong`);
@@ -54,13 +55,7 @@ client.on('interactionCreate', async interaction => {
         await interaction.reply(`${flirt(interaction)}`)
     }
     if (interaction.commandName === 'bully'){
-        let bulliedName = interaction.options.get('who').user.username || interaction.user.username
-        client.user.setActivity({
-            name: `& Bullying ${bulliedName}`,
-            type: ActivityType.Watching
-        })
-
-        await interaction.reply(`${bully(interaction)}`)
+        return bully(interaction, client)
     }
     if (interaction.commandName === 'happydango'){
         await interaction.reply('https://64.media.tumblr.com/998b507d66cd5bdbbf7b8d0a9adec491/tumblr_ndn73oBBRw1td6y6ho2_500.gif')

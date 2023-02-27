@@ -1,0 +1,44 @@
+{
+    "schema":[
+        {
+            "name" : "ping",
+            "description" : "PONG!"
+        },
+        {
+            "name" : "roll",
+            "description": "Gives you a number between 0-100"
+        },
+        {
+            "name": "bully",
+            "description": "Talks massive smack about you and doesn't hold back! ",
+            "options": [
+                {
+                    "name": "who",
+                    "type": 6,
+                    "description": "The person to bully",
+                    "required": true
+                }
+            ]
+        },
+        {
+            "name": "sexy",
+            "description": "Try it out queen!"
+        },
+        {
+            "name": "happydango",
+            "description": "Sends a Cute Dango gif"
+        },
+        {
+            "name": "angrydango",
+            "description": "Sends an angry Dango gif"
+        },
+        {
+            "name": "flirt",
+            "description": "Gives cringey pick up lines"
+        },
+        {
+            "name": "pun",
+            "description": "Gives you a stupid pun to cry about"
+        }
+    ]
+}

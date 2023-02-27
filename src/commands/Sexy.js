@@ -3,7 +3,7 @@ const  getRandomNum  = require("../Intrinsics/randomInt").getRandomNum
 const sexy = require("../dataPool/sexy.json").sexyReplies
 
 module.exports = {
-    Sexy: function(interaction){
+    Sexy: function(interaction, client){
         return(`${userMention(interaction.user.id)} ${sexy[getRandomNum(sexy.length)].message}`)
     }
 }
